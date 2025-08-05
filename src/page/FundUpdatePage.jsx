@@ -17,7 +17,7 @@ function FundUpdatePage() {
     useEffect(() => {
         const fetchFund = async () => {
             try {
-                const res = await axios.get(`http://localhost:4000/api/v1/fund/get/${id}`);
+                const res = await axios.get(`https://gramfund-server.onrender.com/api/v1/fund/get/${id}`);
                 const data = res.data.data;
                 setFund(data);
                 setFormData({
@@ -69,7 +69,7 @@ function FundUpdatePage() {
             }
 
             await axios.patch(
-                `http://localhost:4000/api/v1/fund/update/${id}`,
+                `https://gramfund-server.onrender.com/v1/fund/update/${id}`,
                 form,
                 {
                     headers: {

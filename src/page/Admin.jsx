@@ -10,7 +10,7 @@ function Admin({ isLoggedIn, setIsLoggedIn }) {
     const submitHandler = async(e) => {
         e.preventDefault();
         try {
-            const response =await axios.post("http://localhost:4000/api/v1/admin/login",
+            const response =await axios.post("https://gramfund-server.onrender.com/api/v1/admin/login",
                 { email, password }
             );
             const token = response.data.token;

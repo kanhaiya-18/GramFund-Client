@@ -12,7 +12,7 @@ function Fund({ isLoggedIn }) {
     useEffect(() => {
         const getFunds = async () => {
             try {
-                const response = await axios.get("http://localhost:4000/api/v1/fund/get");
+                const response = await axios.get("https://gramfund-server.onrender.com/api/v1/fund/get");
                 setAllFunds(response.data.data);
             }
             catch (error) {
