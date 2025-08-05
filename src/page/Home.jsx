@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 // import image from "../assets/pxfuel.jpg";
 function Home() {
     return (
-        <div className="min-h-screen ">
+        <div className="min-h-screen">
             {/* hero section  */}
             <section>
                 {/* <div className="relative" >
                 <img src={image} alt="logo" />
             </div> */}
-                <div className="pt-48 sm:bg-pt-24 text-center" >
-                    <h1 className=" md:text-6xl text-4xl font-bold text-indigo-700">Welcome to GramFund</h1>
-                    <p className="text-lg  text-gray-600 mt-4 mb-6">
+                <div className="md:pt-48 pt-20 sm:bg-pt-24 text-center" >
+                    <h1 className=" md:text-5xl mx-10 text-3xl font-bold text-indigo-700">Welcome to <span className="text-4xl md:text-6xl">GramFund</span></h1>
+                    <p className="text-lg  text-gray-600 mx-7 mt-4 mb-6">
                         A transparent way to track village development funds and raise your voice.
                     </p>
                 </div>
@@ -32,7 +32,7 @@ function Home() {
                 </div>
             </section>
             {/* Features Section */}
-            <section className="pb-16 pt-36  px-6 max-w-6xl mx-auto">
+            <section className="pb-16 md:pt-36 pt-20 px-6 max-w-6xl mx-auto">
                 <h2 className="text-3xl font-semibold text-center text-indigo-700 mb-12">
                     How GramFund Helps You
                 </h2>
