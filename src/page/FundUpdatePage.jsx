@@ -69,7 +69,7 @@ function FundUpdatePage() {
             }
 
             await axios.patch(
-                `https://gramfund-server.onrender.com/v1/fund/update/${id}`,
+                `https://gramfund-server.onrender.com/api/v1/fund/update/${id}`,
                 form,
                 {
                     headers: {
