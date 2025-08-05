@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 function Fund({ isLoggedIn }) {
 
@@ -46,21 +48,8 @@ function Fund({ isLoggedIn }) {
     // console.log("totalfund: ", totalFund);
 
     //index for image scrolling
-    const [imageIndexes, setImageIndexes] = useState({});
+    // const [imageIndexes, setImageIndexes] = useState({});
 
-    const leftClick = (id, length) => {
-        setImageIndexes((prev) => ({
-            ...prev,
-            [id]: prev[id] === 0 || prev[id] === undefined ? length - 1 : prev[id] - 1,
-        }));
-    };
-
-    const rightClick = (id, length) => {
-        setImageIndexes((prev) => ({
-            ...prev,
-            [id]: prev[id] === length - 1 ? 0 : (prev[id] || 0) + 1,
-        }))
-    }
     if (loading) {
         return (<p className="flex justify-center items-center min-h-screen text-xl font-semibold text-indigo-600">
             loading the data...
@@ -72,7 +61,7 @@ function Fund({ isLoggedIn }) {
             <h1 className="text-4xl font-bold text-indigo-700 text-center my-10">
                 Village Development Funds
             </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-3 p-3 m-3 text-white ml-32">
+            <div className="grid grid-cols-1 md:grid-cols-3 p-3 m-10 md:ml-20 text-white  gap-10">
                 <div className="bg-indigo-600 rounded-xl p-6 shadow-md max-w-[250px]">
                     <h2 className="text-xl font-semibold">Total Fund</h2>
                     <p className="text-xl md:text-3xl font-bold pt-2">{totalFund}</p>
@@ -87,7 +76,7 @@ function Fund({ isLoggedIn }) {
                 </div>
             </div>
             {/* drop=-down list  */}
-            <div className="flex justify-end  mr-20 mt-14">
+            <div className="flex md:justify-end justify-center md:mr-20 mt-14">
                 <select className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none  focus:ring-indigo-200" name="filtered"
                     value={filtered} onChange={(e) => setFiltered(e.target.value)}>
                     <option value="All">All</option>
@@ -100,23 +89,24 @@ function Fund({ isLoggedIn }) {
                 {
                     filteredFund.map((item) => (
                         <div key={item.id} className="bg-white text-gray-700 rounded-xl shadow-lg p-5 hover:shadow-xl transition mb-5">
-                            <div className="relative flex items-center justify-center mb-3">
-                                <button
-                                    onClick={() => leftClick(item.id, item.image.length)}
-                                    className="absolute left-2 top-1/2  text-2xl bg-indigo-700 text-white p-1 px-2 rounded-full shadow ">
-                                    ←
-                                </button>
-
-                                <img src={item.image[imageIndexes[item.id] || 0]}
-                                    alt={item.title}
-                                    className="w-[330px] h-56 object-cover rounded" />
-
-                                <button
-                                    onClick={() => rightClick(item.id, item.image.length)}
-                                    className="absolute right-2 top-1/2 text-2xl bg-indigo-700 text-white p-1 px-2 rounded-full shadow ">
-                                    →
-                                </button>
+                            <div className="mb-4">
+                                <Swiper
+                                    spaceBetween={10}
+                                    slidesPerView={1}
+                                    loop={true}
+                                    className="rounded overflow-hidden">
+                                    {item.image.map((src, index) => (
+                                        <SwiperSlide key={index}>
+                                            <img
+                                                src={src}
+                                                alt={`${item.title}-${index}`}
+                                                className="w-full h-56 object-cover"
+                                            />
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
                             </div>
+
 
                             <div>
                                 <h2 className="text-xl font-semibold m-2"> {item.title} </h2>

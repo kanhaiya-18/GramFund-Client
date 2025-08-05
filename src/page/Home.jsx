@@ -11,7 +11,7 @@ function Home() {
                 <img src={image} alt="logo" />
             </div> */}
                 <div className="pt-48 sm:bg-pt-24 text-center" >
-                    <h1 className=" md:text-6xl sm:text-4xl font-bold text-indigo-700">Welcome to GramFund</h1>
+                    <h1 className=" md:text-6xl text-4xl font-bold text-indigo-700">Welcome to GramFund</h1>
                     <p className="text-lg  text-gray-600 mt-4 mb-6">
                         A transparent way to track village development funds and raise your voice.
                     </p>

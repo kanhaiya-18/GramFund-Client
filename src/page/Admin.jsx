@@ -30,7 +30,7 @@ function Admin({ isLoggedIn, setIsLoggedIn }) {
     }
     return (
         <div className="flex flex-col justify-center items-center min-h-screen ">
-            <form onSubmit={submitHandler} className="bg-white p-8  rounded-lg shadow-lg w-[400px]">
+            <form onSubmit={submitHandler} className="bg-white p-8  rounded-lg shadow-lg w-80 md:w-[400px]">
                 <h1 className="text-3xl font-bold mb-9 text-center text-indigo-700">Admin Login </h1>
                 <div className="mb-4 flex flex-col">
                     <label htmlFor="email" className="block text-md font-medium text-gray-700 mb-6">

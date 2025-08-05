@@ -94,8 +94,8 @@ function FundUpdatePage() {
 
     return (
         <div className="max-w-3xl mx-auto py-10 px-6 min-h-screen flex flex-col justify-center items-center">
-            <h1 className="text-4xl text-center font- font-bold mb-8 text-indigo-800">Update Fund</h1>
-            <form onSubmit={handleSubmit} className=" bg-white p-8  rounded-lg shadow-lg w-[400px]">
+            <h1 className="text-4xl text-center font- font-bold mb-8 text-indigo-700">Update Fund</h1>
+            <form onSubmit={handleSubmit} className=" bg-white p-8  rounded-lg shadow-lg md:w-[400px]">
                 <div>
                     <label className="block text-md font-medium text-gray-700 mb-2">Title</label>
                     <input

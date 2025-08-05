@@ -48,6 +48,7 @@ function NewFunds() {
             }
             catch (e) {
                 console.log("some error occured ", e);
+                alert("please fill all the details properly");
             }
         }
         func();
@@ -55,8 +56,8 @@ function NewFunds() {
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen">
-            <h1 className="text-5xl font-bold my-12 text-center text-indigo-700">Enter Project Details</h1>
-            <form className="bg-white p-8  rounded-lg shadow-lg w-[400px] flex flex-col"
+            <h1 className="text-3xl md:text-5xl font-bold my-12 text-center text-indigo-700">Enter Project Details</h1>
+            <form className="bg-white p-8  rounded-lg shadow-lg w-80 md:w-[400px] flex flex-col"
                 onSubmit={submitHandler}>
 
                 <label htmlFor="id" className="block text-md font-medium text-gray-700 mt-5">Id</label>
