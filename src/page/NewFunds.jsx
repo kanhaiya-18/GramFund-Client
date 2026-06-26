@@ -34,7 +34,7 @@ function NewFunds() {
         const func = async () => {
 
             try {
-                const res = await axios.post("https://gramfund-server.onrender.com/api/v1/fund/create", data,
+                const res = await axios.post("https://gramfund-server-wxlu.onrender.com/api/v1/fund/create", data,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

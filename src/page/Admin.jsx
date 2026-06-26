@@ -2,6 +2,8 @@ import { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+
+
 function Admin({ isLoggedIn, setIsLoggedIn }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -10,7 +12,7 @@ function Admin({ isLoggedIn, setIsLoggedIn }) {
     const submitHandler = async(e) => {
         e.preventDefault();
         try {
-            const response =await axios.post("https://gramfund-server.onrender.com/api/v1/admin/login",
+            const response =await axios.post("https://gramfund-server-wxlu.onrender.com/api/v1/admin/login",
                 { email, password }
             );
             const token = response.data.token;
