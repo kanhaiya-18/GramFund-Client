@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-import axios from 'axios';
+// import axios from 'axios';
+import api from "../utils"
 import { useNavigate } from "react-router-dom";
 
 
@@ -9,15 +10,15 @@ function Admin({ isLoggedIn, setIsLoggedIn }) {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
-    const submitHandler = async(e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            const response =await axios.post("https://gramfund-server-wxlu.onrender.com/api/v1/admin/login",
+            await api.post("admin/login",
                 { email, password }
             );
-            const token = response.data.token;
+            // const token = response.data.token;
             // Store token in localStorage
-            localStorage.setItem("admintoken", token);
+            // localStorage.setItem("admintoken", token);
 
             //update login
             setIsLoggedIn(true);
@@ -25,7 +26,7 @@ function Admin({ isLoggedIn, setIsLoggedIn }) {
             //navigate to dashboard
             navigate("/admin/dashboard");
         }
-        catch(err){
+        catch (err) {
             console.log(err);
             alert("credentials are invalid, try again")
         }

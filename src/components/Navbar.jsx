@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import api from "../utils";
 function Navbar({ isLoggedIn, setIsLoggedIn }) {
   // const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  function clickHandler() {
+  const clickHandler = async() => {
     setIsLoggedIn(false);
-    localStorage.removeItem("admintoken");
+    // localStorage.removeItem("admintoken");
+    await api.post("/admin/logout")
     // navigate("/");
     setIsMenuOpen(false);
   }

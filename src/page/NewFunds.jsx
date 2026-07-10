@@ -1,7 +1,7 @@
-import axios from "axios";
+// import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import api from "../utils.jsx";
 function NewFunds() {
     const [fillForm, setFillForm] = useState({
         id: "",
@@ -21,11 +21,11 @@ function NewFunds() {
     }
     function submitHandler(e) {
         e.preventDefault();
-        const token = localStorage.getItem("admintoken");
-        if (!token) {
-            alert("You're not authorized. Please log in first.");
-            return;
-        }
+        // const token = localStorage.getItem("admintoken");
+        // if (!token) {
+        //     alert("You're not authorized. Please log in first.");
+        //     return;
+        // }
         const data = {
             ...fillForm,
             id: Number(fillForm.id),
@@ -34,12 +34,7 @@ function NewFunds() {
         const func = async () => {
 
             try {
-                const res = await axios.post("https://gramfund-server-wxlu.onrender.com/api/v1/fund/create", data,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        }
-                    }
+                const res = await api.post("/fund/create", data,
                 );
                 if (res) {
                     alert("Project added successfully");

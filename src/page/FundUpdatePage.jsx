@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import api from "../utils"
 
 function FundUpdatePage() {
     const { id } = useParams();
@@ -17,7 +18,7 @@ function FundUpdatePage() {
     useEffect(() => {
         const fetchFund = async () => {
             try {
-                const res = await axios.get(`https://gramfund-server-wxlu.onrender.com/api/v1/fund/get/${id}`);
+                const res = await axios.get(`http://localhost:4000/api/v1/fund/get/${id}`);
                 const data = res.data.data;
                 setFund(data);
                 setFormData({
@@ -52,11 +53,11 @@ function FundUpdatePage() {
         e.preventDefault();
 
         try {
-            const token = localStorage.getItem("admintoken");
-            if (!token) {
-                alert("you're not logged in");
-                return;
-            }
+            // const token = localStorage.getItem("admintoken");
+            // if (!token) {
+            //     alert("you're not logged in");
+            //     return;
+            // }
 
             const form = new FormData();
             form.append("title", formData.title);
@@ -68,15 +69,9 @@ function FundUpdatePage() {
                 form.append("images", formData.images[i]);
             }
 
-            await axios.patch(
-                `https://gramfund-server-wxlu.onrender.com/api/v1/fund/update/${id}`,
+            await api.patch(
+                `/fund/update/${id}`,
                 form,
-                {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                        "Authorization": `Bearer ${token}`
-                    }
-                }
             );
             alert("Fund updated successfully!");
             navigate("/fund");
